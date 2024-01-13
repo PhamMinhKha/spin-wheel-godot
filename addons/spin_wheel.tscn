@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://clfvobvi3rno6"]
+
+[ext_resource type="Texture2D" uid="uid://o5281jsg2i68" path="res://addons/assets_spin_wheel/spin_wheel_background.png" id="1_h5jq3"]
+[ext_resource type="Script" path="res://addons/spin_wheel.gd" id="1_oakmn"]
+[ext_resource type="Texture2D" uid="uid://ff556ic5603l" path="res://addons/assets_spin_wheel/spin_wheel_front_empty.png" id="2_h18fy"]
+[ext_resource type="Texture2D" uid="uid://defxo6urikxl6" path="res://addons/assets_spin_wheel/spin_wheel_button_ring.png" id="3_doaok"]
+[ext_resource type="Texture2D" uid="uid://bsd6eravgnhy5" path="res://addons/assets_spin_wheel/spin_wheel_button.png" id="3_i8ccs"]
+[ext_resource type="Texture2D" uid="uid://swfesmtw11ic" path="res://addons/assets_spin_wheel/spin_wheel_button_press.png" id="4_taphi"]
+[ext_resource type="Texture2D" uid="uid://cbu3r8pscyuvj" path="res://addons/assets_spin_wheel/spin_wheel_arrow.png" id="6_iiacy"]
+
+[node name="spin_wheel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(440, 622)
+script = ExtResource("1_oakmn")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -450.0
+offset_right = 450.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_h5jq3")
+
+[node name="front" type="TextureRect" parent="background"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 900.0
+scale = Vector2(0.92, 0.92)
+pivot_offset = Vector2(450, 450)
+texture = ExtResource("2_h18fy")
+
+[node name="background_button" type="TextureRect" parent="background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_doaok")
+
+[node name="btn_spin" type="TextureButton" parent="background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.800002, 0.800002)
+pivot_offset = Vector2(100, 100)
+texture_normal = ExtResource("3_i8ccs")
+texture_pressed = ExtResource("4_taphi")
+stretch_mode = 3
+
+[node name="arrow" type="TextureRect" parent="background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 181.0
+grow_horizontal = 2
+scale = Vector2(0.479999, 0.479999)
+pivot_offset = Vector2(100, 0)
+texture = ExtResource("6_iiacy")
+
+[connection signal="pressed" from="background/btn_spin" to="." method="_on_btn_spin_pressed"]
